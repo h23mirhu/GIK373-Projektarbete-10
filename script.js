@@ -1,5 +1,5 @@
 // URL for the Sweden's forest area change over time written in the variable 'urlSeForestArea'
-// Från SCB
+// From SCB
 const urlSeForestArea = 'https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN';
 // JSON code for the Sweden's forest area change over time written in the variable 'querySeForestArea'
 const querySeForestArea = {
@@ -98,10 +98,10 @@ function printSeForestAreaChart(dataSeForestArea) {
     });
 }
 
-// URL for the average deforestation of tree sorts in each region in Sweden written in the variable 'urlSeDeforestation'
-// Från SLU
+// URL for the average deforestation of trees in each region in Sweden written in the variable 'urlSeDeforestation'
+// From SLU
 const urlSeDeforestation = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Avverkning/AVV_arlig_avverkning_landsdelar_tab.px';
-// JSON code for the average deforestation of tree sorts in each region in Sweden (All) written in the variable 'querySeDeforestation'
+// JSON code for the average deforestation of trees in each region in Sweden written in the variable 'querySeDeforestation'
 const querySeDeforestation = {
   "query": [
     {
@@ -169,12 +169,12 @@ const requestSeDeforestation = new Request(urlSeDeforestation, {
 });
 
 // The method fetch is used to preform the requestSeDeforestation and convert it to JSON
-// The function 'printSeForestAreaChartA' is sent in the last .then
+// The function 'printSeTreesChart' is sent in the last .then
 fetch(requestSeDeforestation)
     .then((responseSeDeforestation) => responseSeDeforestation.json())
-    .then((dataSeTreesA) => {
-        const { labels, data } = preparationSeTreesChart(dataSeTreesA.data);
-        printSeDeforestationChart(
+    .then((dataSeDeforestation) => {
+        const { labels, data } = preparationSeTreesChart(dataSeDeforestation.data);
+        printSeTreesChart(
             'seDeforestation',
             "Sweden’s Average Deforestation of Trees in Each region (2000-2020)",
             labels,
@@ -182,8 +182,10 @@ fetch(requestSeDeforestation)
         );
     });
 
+// URL for the average tree growth in each region in Sweden written in the variable 'urlSeTreeGrowth'
+// From SLU
 const urlSeTreeGrowth = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Skogsmark/Tillvaxt/SM_Tillvaxt_tab.px';
-
+// JSON code for the average tree growth in each region in Sweden written in the variable 'querySeTreeGrowth'
 const querySeTreeGrowth = {
   "query": [
     {
@@ -231,17 +233,101 @@ const requestSeTreeGrowth = new Request(urlSeTreeGrowth, {
 });
 
 // The method fetch is used to preform the requestSeTreeGrowth and convert it to JSON
-// The function 'displaySeTreeGrowthOnMap' is sent in the last .then
+// The function 'printSeTreesChart' is sent in the last .then
 fetch(requestSeTreeGrowth)
     .then((responseSeTreeGrowth) => responseSeTreeGrowth.json())
-    .then((dataSeTreesA) => {
-        const { labels, data } = preparationSeTreesChart(dataSeTreesA.data, 100);
-        displaySeTreeGrowthOnMap(
+    .then((dataSeTreeGrowth) => {
+        const { labels, data } = preparationSeTreesChart(dataSeTreeGrowth.data, 100);
+        printSeTreesChart(
             'seTreeGrowth',
+            'Sweden’s Average Tree growth in Each region (2002-2018)',
             labels,
             data
         );
     });
+
+// URL for the protected forest area in each region in Sweden written in the variable 'urlSeProtectedForest'
+// From SCB
+const urlSeProtectedForest = 'https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0605/SkyddSkogFrivillig';
+// JSON code for the protected forest area in each region in Sweden written in the variable 'querySeProtectedForest'
+const querySeProtectedForest = {
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "vs:D-Landsdelar",
+        "values": [
+          "NON",
+          "SON",
+          "SVE",
+          "GOT"
+        ]
+      }
+    },
+    {
+      "code": "Overlapp",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "UÖA"
+        ]
+      }
+    },
+    {
+      "code": "TypSkogsmark",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "SKT"
+        ]
+      }
+    },
+    {
+      "code": "Former",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "FSS"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0000024O"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2023"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "JSON"
+  }
+};
+
+// Request object with information from the dataset
+// The request har the type 'POST'
+// The content of the request is in the variable 'querySeProtectedForest'
+const requestSeProtectedForest = new Request(urlSeProtectedForest, {
+    method: 'POST',
+    body: JSON.stringify(querySeProtectedForest)
+});
+
+// The method fetch is used to preform the requestSeProtectedForest and convert it to JSON
+// The function 'printSeTreesChart' is sent in the last .then
+fetch(requestSeProtectedForest)
+    .then((responseSeProtectedForest) => responseSeProtectedForest.json())
+    .then(displaySeProtectedForestOnMap);
 
 // Prepares the data for the trees charts in Sweden
 // The function is made to be used for the all the charts for for the average deforestation and average tree growth map
@@ -290,8 +376,8 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     return { labels, data};
 }
 
-// Function for the bar chart for the for the average deforestation of tree sorts in each region in Sweden
-function printSeDeforestationChart(chartId, chartTitle, labels, data){
+// Function for the bar chart for the for the average deforestation of trees in each region in Sweden
+function printSeTreesChart(chartId, chartTitle, labels, data){
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
         {
@@ -322,8 +408,24 @@ function printSeDeforestationChart(chartId, chartTitle, labels, data){
     });
 }
 
-// Function for the map of the average tree growth of tree sorts in each region in Sweden
-function displaySeTreeGrowthOnMap(chartId, labels, data){
+// Function for the map of protected forest area in each region in Sweden
+function displaySeProtectedForestOnMap(dataSeProtectedForest){
+  // Renames the region code to names
+  const regionCodes = {
+      'NON': 'N Norrland',
+      'SON': 'S Norrland',
+      'SVE': 'Svealand',
+      'GOT': 'Götaland'
+  };
+
+  // Writes the data to the variable 'region'
+  const region = dataSeProtectedForest.data;
+  // Writes the 2nd key in the array, which has the region, in the variable 'labels'
+  // regionCodes renames the keys
+  const labels = region.map((region) => regionCodes[region.key[0]]);
+  // Writes the values, which contains the stem volume over bark, to the varaible 'data'
+  const data = region.map((region) => region.values[0]);
+
   const mapData = { labels, data };
 
   const map = [
@@ -342,5 +444,5 @@ function displaySeTreeGrowthOnMap(chartId, labels, data){
     height:600
   };
 
-  Plotly.newPlot(chartId, map, layout);
+  Plotly.newPlot('seProtectedForest', map, layout);
 }
