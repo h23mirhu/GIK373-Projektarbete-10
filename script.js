@@ -68,7 +68,11 @@ function printSeForestAreaChart(dataSeForestArea) {
     const datasets = [
         {
             label: "Sweden’s Forest Area Change Over Time (2000-2020)",
-            data
+            data,
+            fill: {
+              target: 'origin',
+              below: 'rgb(0, 0, 255)'
+            }
         }
     ];
     // A line chart is created in the HTML-element with the id 'seForestArea'
