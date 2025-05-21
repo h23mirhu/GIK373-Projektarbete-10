@@ -98,11 +98,11 @@ function printSeForestAreaChart(dataSeForestArea) {
     });
 }
 
-// URL for the average deforestation of tree sorts in each region in Sweden written in the variable 'urlSeDeforestationA'
+// URL for the average deforestation of tree sorts in each region in Sweden written in the variable 'urlSeDeforestation'
 // Från SLU
 const urlSeDeforestation = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Avverkning/AVV_arlig_avverkning_landsdelar_tab.px';
-// JSON code for the average deforestation of tree sorts in each region in Sweden (All) written in the variable 'querySeDeforestationA'
-const querySeDeforestationA = {
+// JSON code for the average deforestation of tree sorts in each region in Sweden (All) written in the variable 'querySeDeforestation'
+const querySeDeforestation = {
   "query": [
     {
       "code": "År",
@@ -159,6 +159,28 @@ const querySeDeforestationA = {
     "format": "JSON"
   }
 };
+
+// Request object with information from the dataset
+// The request har the type 'POST'
+// The content of the request is in the variable 'querySeDeforestation'
+const requestSeDeforestation = new Request(urlSeDeforestation, {
+    method: 'POST',
+    body: JSON.stringify(querySeDeforestation)
+});
+
+// The method fetch is used to preform the requestSeDeforestation and convert it to JSON
+// The function 'printSeForestAreaChartA' is sent in the last .then
+fetch(requestSeDeforestation)
+    .then((responseSeDeforestation) => responseSeDeforestation.json())
+    .then((dataSeTreesA) => {
+        const { labels, data } = preparationSeTreesChart(dataSeTreesA.data);
+        printSeDeforestationChart(
+            'seDeforestation',
+            "Sweden’s Average Deforestation of Trees in Each region (2000-2020)",
+            labels,
+            data
+        );
+    });
 
 const urlSeTreeGrowth = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Skogsmark/Tillvaxt/SM_Tillvaxt_tab.px';
 
@@ -277,7 +299,7 @@ function printSeDeforestationChart(chartId, chartTitle, labels, data){
             data
         }
     ];
-    // A bar chart is created in the HTML-element with the id 'seDeforestationA'
+    // A bar chart is created in the HTML-element with the id 'seDeforestation'
     new Chart(document.getElementById(chartId), {
         type: 'bar',
         data: { labels, datasets },
