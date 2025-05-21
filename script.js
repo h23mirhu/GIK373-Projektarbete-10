@@ -428,12 +428,28 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
 
   const mapData = { labels, data };
 
-  const map = [
+  const dataForMap = [
     {
       type: "choroplethmap", 
       locations: mapData.labels, 
       z: mapData.data,
       featureidkey: 'properties.region',
+      colorbar: {
+        title: {
+          text: 'Percentage of Protected Forest Area', 
+          side: 'right'
+        }
+      },
+      colorscale: [
+        [0, 'rgb(198,219,239)'],
+        [1, 'rgb(8,48,107)']
+      ],
+      marker: {
+        line: {
+          width: 0.5,
+          color: 'white'
+        }
+      },
       geojson: 'sweden_regions.json'
     }
   ];
@@ -441,8 +457,8 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
   const layout = {
     map: {center: {lon: 17.3, lat: 63}, zoom: 3.3},
     width: 370, 
-    height:600
+    height:620
   };
 
-  Plotly.newPlot('seProtectedForest', map, layout);
+  Plotly.newPlot('seProtectedForest', dataForMap, layout);
 }
