@@ -609,6 +609,16 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
 
         new Chart(document.getElementById('euForestOverTime'), {
             type: 'line',
-            data: {labels, datasets}
+            data: {labels, datasets},
+            options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: `Million Hectares`
+                    }
+                }
+            }
+        }
             })
     })
