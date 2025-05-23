@@ -579,7 +579,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         //Sorting data
         const sortedEUData = data.data.map((item) => ({
             year: item.timePeriodStart,
-            value: item.value,
+            value: item.value / 1000, //Divide to get millions instead of thousands
             continent: item.geoAreaName,
             description: item.seriesDescription
         }))
@@ -595,7 +595,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         const values = forestAreaData.map((item) => item.value);
 
         const datasets = [{
-            label: "Forest area (thousands of hectares)",
+            label: "Forest area (millions of hectares)",
             data: values,
             borderWidth: 2,
             backgroundColor: 'hsla(125, 19%, 39%, 0.5)',
