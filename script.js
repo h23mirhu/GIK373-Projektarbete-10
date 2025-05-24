@@ -98,10 +98,10 @@ function printSeForestAreaChart(dataSeForestArea) {
     });
 }
 
-// URL for the average deforestation of trees in each region in Sweden written in the variable 'urlSeDeforestation'
+// URL for the average deforestation in each region in Sweden written in the variable 'urlSeDeforestation'
 // From SLU
 const urlSeDeforestation = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Avverkning/AVV_arlig_avverkning_landsdelar_tab.px';
-// JSON code for the average deforestation of trees in each region in Sweden written in the variable 'querySeDeforestation'
+// JSON code for the average deforestation in each region in Sweden written in the variable 'querySeDeforestation'
 const querySeDeforestation = {
   "query": [
     {
@@ -176,7 +176,7 @@ fetch(requestSeDeforestation)
         const { labels, data } = preparationSeTreesChart(dataSeDeforestation.data);
         printSeTreesChart(
             'seDeforestation',
-            "Sweden’s Average Deforestation of Trees in Each region (2000-2020)",
+            "Sweden’s Average Deforestation in Each Region (2000-2020)",
             labels,
             data
         );
@@ -240,7 +240,7 @@ fetch(requestSeTreeGrowth)
         const { labels, data } = preparationSeTreesChart(dataSeTreeGrowth.data, 100);
         printSeTreesChart(
             'seTreeGrowth',
-            'Sweden’s Average Tree growth in Each region (2002-2018)',
+            'Sweden’s Average Tree growth in Each Region (2002-2018)',
             labels,
             data
         );
@@ -376,7 +376,7 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     return { labels, data};
 }
 
-// Function for the bar chart for the for the average deforestation of trees in each region in Sweden
+// Function for the bar chart for the for the average deforestation in each region in Sweden
 function printSeTreesChart(chartId, chartTitle, labels, data){
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
@@ -436,7 +436,7 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       featureidkey: 'properties.region',
       colorbar: {
         title: {
-          text: 'Percentage of Protected Forest Area', 
+          text: 'Percentage of Protected Forest Area (2023)', 
           side: 'right'
         }
       },
@@ -446,8 +446,7 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       ],
       marker: {
         line: {
-          width: 0.5,
-          color: 'white'
+          color: 'rgba(0,0,0,0)'
         }
       },
       geojson: 'sweden_regions.json'
@@ -456,7 +455,7 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
 
   const layout = {
     map: {center: {lon: 17.3, lat: 63}, zoom: 3.3},
-    width: 370, 
+    width: 385, 
     height:620
   };
 
