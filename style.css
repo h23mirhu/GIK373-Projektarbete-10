@@ -1,0 +1,69 @@
+.bg-dg {
+    background-color: hsl(131, 24%, 18%);
+}
+.bg-g {
+    background-color: hsl(125, 18%, 25%);
+}
+.bg-lg {
+    background-color: hsl(125, 19%, 39%);
+}
+.bg-w {
+    background-color: hsl(54, 68%, 94%);
+}
+.bg-lb {
+    background-color: hsl(32, 50%, 62%);
+}
+.bg-b {
+    background-color: hsl(28, 50%, 44%);
+}
+.bg-g-gradient{
+    background-image: linear-gradient(0deg, rgba(80, 118, 83, 1) 0%, rgba(34, 56, 38, 1) 100%); 
+    height: 100vh;
+}
+
+.c-dg {
+    color: hsl(131, 24%, 18%);
+}
+.c-g {
+    color: hsl(125, 18%, 25%);
+}
+.c-lg {
+    color: hsl(125, 19%, 39%);
+}
+.c-w {
+    color: hsl(54, 68%, 94%);
+}
+.c-lb {
+    color: hsl(32, 50%, 62%);
+}
+.c-b {
+    color: hsl(28, 50%, 44%);
+}
+
+.b-dg {
+    border-color: hsl(131, 24%, 18%) !important;
+}
+.b-g {
+    border-color: hsl(125, 18%, 25%) !important; 
+}
+.b-lg {
+    border-color: hsl(125, 19%, 39%) !important;
+}
+.b-w {
+    border-color: hsl(54, 68%, 94%) !important;
+}
+.b-lb {
+    border-color: hsl(32, 50%, 62%) !important;
+}
+.b-b {
+    border-color: hsl(28, 50%, 44%) !important;
+}
+
+a:hover {
+    color: hsl(32, 50%, 62%) !important;
+}
+
+.navbar-toggler:focus {
+    background-color: hsl(54, 68%, 94%);
+    box-shadow: none;
+}
