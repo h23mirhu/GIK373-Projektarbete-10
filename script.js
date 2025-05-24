@@ -69,9 +69,13 @@ function printSeForestAreaChart(dataSeForestArea) {
         {
             label: "Sweden’s Forest Area Change Over Time (2000-2020)",
             data,
+            borderWidth: 2,
+            backgroundColor: 'hsla(125, 19%, 39%, 0.5)',
+            borderColor: 'hsla(131, 24%, 18%, 1)',
+            hoverBorderWidth: 4,
             fill: {
-              target: 'origin',
-              below: 'rgb(0, 0, 255)'
+                target: 'origin',
+                below: 'hsla(125, 19%, 39%, 0.5)'
             }
         }
     ];
@@ -182,11 +186,11 @@ fetch(requestSeDeforestation)
         );
     });
 
-// URL for the average tree growth in each region in Sweden written in the variable 'urlSeTreeGrowth'
+// URL for the average forest growth in each region in Sweden written in the variable 'urlSeForestGrowth'
 // From SLU
-const urlSeTreeGrowth = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Skogsmark/Tillvaxt/SM_Tillvaxt_tab.px';
-// JSON code for the average tree growth in each region in Sweden written in the variable 'querySeTreeGrowth'
-const querySeTreeGrowth = {
+const urlSeForestGrowth = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Skogsmark/Tillvaxt/SM_Tillvaxt_tab.px';
+// JSON code for the average forest growth in each region in Sweden written in the variable 'querySeForestGrowth'
+const querySeForestGrowth = {
   "query": [
     {
       "code": "Län",
@@ -226,21 +230,21 @@ const querySeTreeGrowth = {
 
 // Request object with information from the dataset
 // The request har the type 'POST'
-// The content of the request is in the variable 'querySeTreeGrowth'
-const requestSeTreeGrowth = new Request(urlSeTreeGrowth, {
+// The content of the request is in the variable 'querySeForestGrowth'
+const requestSeForestGrowth = new Request(urlSeForestGrowth, {
     method: 'POST',
-    body: JSON.stringify(querySeTreeGrowth)
+    body: JSON.stringify(querySeForestGrowth)
 });
 
-// The method fetch is used to preform the requestSeTreeGrowth and convert it to JSON
+// The method fetch is used to preform the requestSeForestGrowth and convert it to JSON
 // The function 'printSeTreesChart' is sent in the last .then
-fetch(requestSeTreeGrowth)
-    .then((responseSeTreeGrowth) => responseSeTreeGrowth.json())
-    .then((dataSeTreeGrowth) => {
-        const { labels, data } = preparationSeTreesChart(dataSeTreeGrowth.data, 100);
+fetch(requestSeForestGrowth)
+    .then((responseSeForestGrowth) => responseSeForestGrowth.json())
+    .then((dataSeForestGrowth) => {
+        const { labels, data } = preparationSeTreesChart(dataSeForestGrowth.data, 100);
         printSeTreesChart(
-            'seTreeGrowth',
-            'Sweden’s Average Tree growth in Each Region (2002-2018)',
+            'seForestGrowth',
+            'Sweden’s Average Forest growth in Each Region (2002-2018)',
             labels,
             data
         );
@@ -330,7 +334,7 @@ fetch(requestSeProtectedForest)
     .then(displaySeProtectedForestOnMap);
 
 // Prepares the data for the trees charts in Sweden
-// The function is made to be used for the all the charts for for the average deforestation and average tree growth map
+// The function is made to be used for the all the charts for for the average deforestation and average forest growth map
 // valueScale is used to divide the values for different units, to right all charts in the same unit
 function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     // Renames the region code to names
@@ -354,7 +358,7 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
         'Götaland': 0
     };
     
-    // A loop that counts the average deforestation/tree growth of each region
+    // A loop that counts the average deforestation/forest growth of each region
     // Also combines N Norrland and S Norrland into Norrland
     dataSeTrees.forEach((row) => {
         // Writes the region code to the variable 'regionCode'
@@ -382,7 +386,9 @@ function printSeTreesChart(chartId, chartTitle, labels, data){
     const datasets = [
         {
             label: chartTitle,
-            data
+            data,
+            backgroundColor: 'hsla(125, 19%, 39%, 1)',
+            hoverBackgroundColor: 'hsla(125, 18%, 25%, 1)'
         }
     ];
     // A bar chart is created in the HTML-element with the id 'seDeforestation'
@@ -441,12 +447,13 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
         }
       },
       colorscale: [
-        [0, 'rgb(198,219,239)'],
-        [1, 'rgb(8,48,107)']
+        [0, 'hsla(54, 68%, 94%, 1)'],
+        [0.5, 'hsla(125, 19%, 39%, 1)'],
+        [1, 'hsla(125, 18%, 25%, 1)']
       ],
       marker: {
         line: {
-          color: 'rgba(0,0,0,0)'
+          color: 'hlsa(0,0,0,0)'
         }
       },
       geojson: 'sweden_regions.json'
