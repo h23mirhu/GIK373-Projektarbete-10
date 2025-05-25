@@ -89,3 +89,16 @@ a:hover {
 .screen-height {
     height: 100vh;
 }
+
+.forest-container {
+    width: 100%;
+    height: 226px;
+    background-image: url('forest.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-forest-container {
+    background: linear-gradient(0deg,hsl(32, 50%, 62%) 30%, hsl(125, 19%, 39%) 30%);
+}
