@@ -67,7 +67,7 @@ function printSeForestAreaChart(dataSeForestArea) {
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
         {
-            label: "Sweden’s Forest Area Change Over Time (2000-2020)",
+            label: "Forest Area (Million Hectars)",
             data,
             borderWidth: 2,
             backgroundColor: 'hsla(125, 19%, 39%, 0.5)',
@@ -82,23 +82,7 @@ function printSeForestAreaChart(dataSeForestArea) {
     // A line chart is created in the HTML-element with the id 'seForestArea'
     new Chart(document.getElementById('seForestArea'), {
         type: 'line',
-        data: { labels, datasets },
-        options: {
-            scales: {
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Million Hectars'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Years'
-                    }
-                }
-            }
-        }
+        data: { labels, datasets }
     });
 }
 
@@ -180,7 +164,7 @@ fetch(requestSeDeforestation)
         const { labels, data } = preparationSeTreesChart(dataSeDeforestation.data);
         printSeTreesChart(
             'seDeforestation',
-            "Sweden’s Average Deforestation in Each Region (2000-2020)",
+            "Deforestation (Million m \u00B3sk)",
             labels,
             data
         );
@@ -244,7 +228,7 @@ fetch(requestSeForestGrowth)
         const { labels, data } = preparationSeTreesChart(dataSeForestGrowth.data, 100);
         printSeTreesChart(
             'seForestGrowth',
-            'Sweden’s Average Forest growth in Each Region (2002-2018)',
+            'Forest Growth (Million m \u00B3sk)',
             labels,
             data
         );
@@ -394,23 +378,7 @@ function printSeTreesChart(chartId, chartTitle, labels, data){
     // A bar chart is created in the HTML-element with the id 'seDeforestation'
     new Chart(document.getElementById(chartId), {
         type: 'bar',
-        data: { labels, datasets },
-        options: {
-            scales: {
-                y: {
-                    title: {
-                        display: true,
-                        text: `Million m \u00B3sk`
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Region'
-                    }
-                }
-            }
-        }
+        data: { labels, datasets }
     });
 }
 
@@ -440,12 +408,6 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       locations: mapData.labels, 
       z: mapData.data,
       featureidkey: 'properties.region',
-      colorbar: {
-        title: {
-          text: 'Percentage of Protected Forest Area (2023)', 
-          side: 'right'
-        }
-      },
       colorscale: [
         [0, 'hsla(54, 68%, 94%, 1)'],
         [0.5, 'hsla(125, 19%, 39%, 1)'],
@@ -453,7 +415,7 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       ],
       marker: {
         line: {
-          color: 'hlsa(0,0,0,0)'
+          color: 'rgba(0, 0, 0, 0)'
         }
       },
       geojson: 'sweden_regions.json'
@@ -461,12 +423,20 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
   ];
 
   const layout = {
-    map: {center: {lon: 17.3, lat: 63}, zoom: 3.3},
-    width: 385, 
-    height:620
+    map: {center: {lon: 17.3, lat: 63}, zoom: 2.9},
+    paper_bgcolor: 'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)',
+    margin: {
+      l: 10,
+      r: 0,
+      t: 10,
+      b: 110
+    }
   };
 
-  Plotly.newPlot('seProtectedForest', dataForMap, layout);
+  const config = { responsive: true, displayModeBar:false }
+
+  Plotly.newPlot('seProtectedForest', dataForMap, layout, config);
 }
 
 fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&areaCode=112&areaCode=100&areaCode=203&areaCode=348&areaCode=616&areaCode=498&areaCode=642&areaCode=643&areaCode=703&areaCode=804&areaCode=248&areaCode=208&areaCode=233&areaCode=234&areaCode=246&areaCode=831&areaCode=352&areaCode=372&areaCode=833&areaCode=832&areaCode=428&areaCode=440&areaCode=578&areaCode=744&areaCode=752&areaCode=826&areaCode=008&areaCode=020&areaCode=070&areaCode=191&areaCode=292&areaCode=300&areaCode=336&areaCode=380&areaCode=470&areaCode=499&areaCode=807&areaCode=620&areaCode=674&areaCode=688&areaCode=705&areaCode=724&areaCode=040&areaCode=056&areaCode=250&areaCode=276&areaCode=438&areaCode=442&areaCode=492&areaCode=528&areaCode=756&timePeriod=2000&timePeriod=2001&timePeriod=2002&timePeriod=2003&timePeriod=2004&timePeriod=2005&timePeriod=2006&timePeriod=2007&timePeriod=2008&timePeriod=2009&timePeriod=2010&timePeriod=2011&timePeriod=2012&timePeriod=2013&timePeriod=2014&timePeriod=2015&timePeriod=2016&timePeriod=2017&timePeriod=2018&timePeriod=2019&timePeriod=2020&pageSize=1210')
