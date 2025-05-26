@@ -28,7 +28,7 @@
         </nav>
     </header>
     <main>
-    <div class="container" style="width: 70rem;">
+    <div class="container w-70">
         <div class="row my-5">
             <h1 class="c-w col-12">
                 Europe, Goal 15 and Indicator 15.1.1
@@ -36,17 +36,20 @@
             
         </div>
         <div>
-            <p class="c-w my-4" style="width: 45rem;">
+            <p class="c-w my-4 w-45">
             Within Europe, Goal 15 plays a crucial role in shaping environmental policies focused on ecological recovery and long-term sustainability. Given the continent's diverse climates and history of land use, the sustainable managements of forests is both a priority and a challenge.
             </p>
             <div>
                 <h4 class="c-w mb-2">
                     The change of Europe's forest area over time (2000-2020)
                 </h4>
-                <div style="position: relative; width: 45rem;">
-                    <canvas id="euForestOverTime" class="bg-w" alt="Diagram of Europe's forest area change over time between the years 2000 and 2020. It shows a slowly increasing trend."></canvas>
+                <div class="bg-w pos-rel w-45">
+                    <div class="d-flex justify-content-center">
+                        <div id="euSpinner" class="spinner-border c-g" role="status"></div>
+                    </div>
+                    <canvas id="euForestOverTime"  alt="Diagram of Europe's forest area change over time between the years 2000 and 2020. It shows a slowly increasing trend."></canvas>
                 </div>
-                <p class="c-w my-5" style="width: 45rem;">
+                <p class="c-w my-5 w-45">
                     The diagram above illustrates the development of forest area, measured in millions of hectares, in Europe from 2000 to 2020, however with the exception of the years 2001-2009 and 2011-2014 not being available in the API dataset (SDGs API, 2025). The data reveals a consistent upward trend, beginning at approximately 1,002 million hectares in 2000 and increasing to nearly 1,018 million hectares by 2020. 
                     <br><br>
                     This trend supports SDG Indicator 15.1.1, which measures the proportions of land area covered by forest and indicates the Europe is making tangible progress toward restoring its terrestrial ecosystems. The increase in forest cover also aligns with findings by Palmero-Iniesta et al. (2021), who note that 66% of Europe's forest gains between 1992 and 2015 resulted from expansion into former agricultural lands, while 34% came from regeneration in areas impacted by disturbance (Palmero-Iniesta et al., 2021).
@@ -58,10 +61,13 @@
                 <h4 class="c-w mb-2">
                     Top 5 European Countries with Most Forest Area Gain (%)
                 </h4>
-                <div style="position: relative; height: 40rem; width: auto;">
-                    <canvas id="euForestGainPercent" class="bg-w"></canvas>
+                <div class="bg-w pos-rel w-45">
+                    <div class="d-flex justify-content-center">
+                        <div id="gainSpinner" class="spinner-border c-g" role="status"></div>
+                    </div>
+                    <canvas id="euForestGainPercent" ></canvas>
                 </div>
-                <p class="c-w my-5" style="width: 45rem;">
+                <p class="c-w mb-5 w-45">
                     While the overall trend in Europe shows a steady increase in forest area, national-level data reveals important regional variations. The pie chart above displays the five European countries with the highest relative increase in forest area between 2000 and 2020. Guernsey (45.24%), Iceland (41.91%), and Montenegro (24.3%) lead the gains, followed by Malta (23.91%) and Ireland (19.39%). These high-percentage increases are particularly notable in smaller nations or island territories, where even the modest afforestation efforts can have a significant proportional impact.
                 </p>
             </div>
@@ -69,11 +75,14 @@
                 <h4 class="c-w mb-2">
                     Top European Countries with Most Forest Area Loss (%)
                 </h4>
-                <div style="position: relative; height: 40rem; width: auto;">
-                    <canvas id="euForestLossPercent" class="bg-w"></canvas>
+                <div class="bg-w pos-rel w-45">
+                    <div class="d-flex justify-content-center">
+                        <div id="lossSpinner" class="spinner-border c-g" role="status"></div>
+                    </div>
+                    <canvas id="euForestLossPercent" ></canvas>
                 </div>
-                <p class="c-w mt-5" style="width: 45rem;">
-                    However, as shown in the second pie chart above, not all countries are gaining forest area. Sweden (-0.65%) and Finland (-0.16%), despite being among the most forested countries in Europe, show minor losses. This can be attributed to commercial forestry activities, logging cycles, or temporary land-use transitions. It may also relate to climate-related limitation noted by Ceccherini et al. (2020), who emphasize that boreal and northern forests (such as those in Scandinavia), may face reduced forest productivity due to changing temperature and precipitation patterns (Ceccherini et al., 2020).
+                <p class="c-w mt-5 w-45">
+                    However, as shown in the second pie chart above, not all countries are gaining forest area. Sweden (0.65%) and Finland (0.16%), despite being among the most forested countries in Europe, show minor losses. This can be attributed to commercial forestry activities, logging cycles, or temporary land-use transitions. It may also relate to climate-related limitation noted by Ceccherini et al. (2020), who emphasize that boreal and northern forests (such as those in Scandinavia), may face reduced forest productivity due to changing temperature and precipitation patterns (Ceccherini et al., 2020).
                     <br><br>
                     These observations reinforce the need to interpret national data within climatic and ecological contexts. While some nations expand rapidly due to low initial forest cover and active policies, others may experience fluctuations due to long-term management strategies or environmental stressors. As such, achieving SDG 15.1 requires both quantitative growth and qualitative sustainability in forest management across all regions.
                     <br><br>

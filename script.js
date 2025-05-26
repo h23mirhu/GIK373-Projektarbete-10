@@ -503,7 +503,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             forestValuesByCountry[country][item.year] = item.value;
         })
 
-        const countryForestGainPercent = []; //Store data with each country's forest loss for years 2000 and 2020
+        const countryForestGainPercent = []; //Store data with each country's forest gain for years 2000 and 2020
 
         for(const country in forestValuesByCountry) {
             const values = forestValuesByCountry[country];
@@ -533,21 +533,19 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             label: 'Forest Area Change (%)',
             data: gainValues,
             borderWidth: 2,
-            backgroundColor: [
-                'hsla(131, 24%, 18%, 1)',
-                'hsla(125, 18%, 25%, 1)',
-                'hsla(125, 19%, 39%, 1)'],
+            backgroundColor: 'hsla(125, 19%, 39%, 1)',
             borderColor: 'hsla(54, 68%, 94%, 0.8)',
             hoverBorderWidth: 4
         }];
 
         new Chart(document.getElementById('euForestGainPercent'), {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: gainLabels,
                 datasets: gainDatasets
             }
         })
+        document.getElementById('gainSpinner').style.display = 'none';
 
         const top5Loss = countryForestGainPercent
             .filter((item) => item.percentChange < 0) //filter out countries with an unchanged/positive value
@@ -555,26 +553,26 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             .slice(0, 5)
 
         const lossLabels = top5Loss.map((item) => item.country);
-        const lossValues = top5Loss.map((item) => item.percentChange);
+        const lossValues = top5Loss.map((item) => Math.abs(item.percentChange));
 
         const lossDatasets = [{
             label: "Forest Area Change (%)",
             data: lossValues,
             borderWidth: 2,
-            backgroundColor: [
-                'hsla(125, 18%, 25%, 1)',
-                'hsla(125, 19%, 39%, 1)'],
+            backgroundColor: 'hsla(32, 50%, 62%, 1)',
             borderColor: 'hsla(54, 68%, 94%, 0.8)',
             hoverBorderWidth: 4
         }];
 
         new Chart(document.getElementById('euForestLossPercent'), {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: lossLabels,
                 datasets: lossDatasets
             }
         })
+
+        document.getElementById('lossSpinner').style.display = 'none';
     });
 
         
@@ -627,4 +625,5 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             }
         }
             })
+        document.getElementById('euSpinner').style.display = 'none';
     })

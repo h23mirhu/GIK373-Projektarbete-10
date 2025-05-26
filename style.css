@@ -70,6 +70,18 @@
     text-align: justify;
 }
 
+.pos-rel{
+    position: relative;
+}
+
+.w-45{
+    width: 45rem;
+}
+
+.w-70{
+    width: 70rem;
+}
+
 a:hover {
     color: hsl(32, 50%, 62%) !important;
 }
