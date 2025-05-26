@@ -5,17 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group 10 - Project Work - Sweden</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
 </head>
-<body>
-    <canvas id="seForestArea"></canvas>
-
-    <canvas id="seDeforestation"></canvas>
-
-    <canvas id="seForestGrowth"></canvas>
-
-    <div id="seProtectedForest"></div>
-
+<body class="bg-dg">
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg bg-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand c-b" href="index.html">
+                    <img src="Tree.svg" alt="Tree icon" width="53" height="63">
+                </a>
+                <button class="navbar-toggler bg-lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="custom-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse border-1 border-bottom b-w" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link c-w" href="Europe.html">Europe</a>
+                        <a class="nav-link c-w text-decoration-underline" href="Sweden.html">Sweden</a>
+                        <a class="nav-link c-w" href="references.html">References</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-5 mt-5">
+        <div class="bg-g-gradient">
+            <div class="container">
+                <div class="row mx-1">
+                    <h1 class="c-w pt-3">Sweden, Goal 15</h1>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        Sweden has around 87 billion trees and 70 percent of its surface is covered with forests, according to Swedish Forest Industries (2024). This makes the forest industry one of Sweden’s most important business sectors.  
+                        <br><br>
+                        It is claimed by the Swedish Forest Industries (2024) that environmental and production goals in forestry have been balanced and given equal importance. Even though there is a one percent felling of forests annually, for every tree harvested at least two are planted making growth outpace the felling.  
+                        <br><br>
+                        Despite these claims Sweden experiences the most forest loss out of all the EU countries. In a study published in the journal of Earth’s Future, by Ahlström et al. (2022), old and previously uncut Swedish forests are cut at a steady rate of approximately 1.4 percent between the years 2003 to 2019. This number is almost equivalent to the rate stated in Swedish Forest Industries (2024), though contrastingly Ahlström et al. (2022) does not see the solution in replantation. These forests are slow developing and have a distinct structural and ecological characteristics, which means retrieving them would take centuries.  
+                    </p>
+                </div>
+            </div>
+            <div class="container">
+                <div id="sea" class="row mx-1">
+                    <h4 class="c-w pt-5">The Change of Sweden's Forest Area Over Time (2000-2020)</h4>
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <canvas id="seForestArea" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2" role="img" aria-label="A graph of Sweden's forest area change over time between the years 2000 and 2020. It shows an increase between the years 2000 and 2005, then a significant decrease between the years 2005 and 2020.">
+                                A graph of Sweden's forest area change over time between the years 2000 and 2020. It shows an increase between the years 2000 and 2005, then a significant decrease between the years 2005 and 2020.
+                            </canvas>
+                        </div>
+                    </div>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        A graph with data from Statistics Sweden (2022) showing Sweden’s forest area change over time provides another perspective for the loss of forests in Sweden. It provides the ability to compare the data from SDGs API (2025) with other data to see how it differs.
+                        <br>
+                        (The chart for SDGs API (2025) data can be found here: <a class="c-b fw-semibold my-2" href="Europe.html#eual">European Countries With Most Forest Area Loss</a>)
+                        <br><br>
+                        The graph above shows that the change rate of forest area between each five year is both increasing and decreasing for Statistics Sweden (2022) data, with the change rate being:</p>
+                    <ul class="row ms-3">
+                        <li class="c-w col-12">From 2000 to 2005 was an increase with 0.98 percent </li>
+                        <li class="c-w col-12">From 2005 to 2010 was a decrease with 6.8 percent </li>
+                        <li class="c-w col-12">From 2010 to 2015 was an increase with 0.14 percent</li>
+                        <li class="c-w col-12">From 2015 to 2020 was a decrease with 0.92 percent</li>
+                    </ul>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        Though in total there is a significant decrease of around 2 million hectares between the years 2000 to 2020, which is a decrease of about 6.6 percent in 20 years.
+                        <br><br>
+                        Both Statistics Sweden (2022) and SDGs API (2025) shows a clear decrease in forest area from the years 2000 to 2020. Though Statistics Sweden (2022) shows a much more significant decrease, about ten times more than SDGs API (2025), while Ahlström et al. (2022) found an even higher decrease in only old forests of about 19 percent.  
+                        <br><br>
+                        It is important to note that both Statistics Sweden (2022) and SDGs API (2025) shows the decrease in all forests in Sweden while Ahlström et al. (2022) shows a decrease in old, previously uncut and unprotected forests only. Another thing to note is that Statistics Sweden (2022) and SDGs API (2025) shows data from a different as well as longer time span than Ahlström et al. (2022) study. The cause of the forest area loss seen in both Statistics Sweden (2022) and SDGs API (2025) might not be only caused by clear-cuts, it can be caused by other factors such as natural occurrences.  
+                    </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row mx-1">
+                    <h4 id="sed" class="c-w pt-5">Average Deforestation Volume in Swedish Regions (2000-2020)</h4>
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <canvas id="seDeforestation" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2" role="img" aria-label="A chart of the average deforestation volume in Swedish regions in million forest cubic meters. It shows The values 12m&sup3;sk for Northern Norrland, 20m2sk for Southern Norrland, 23m&sup3;sk for Svealand and 30.5m&sup3;sk for Götaland.">
+                                A chart of the average deforestation volume in Swedish regions in million forest cubic meters. It shows The values 12m&sup3;sk for Northern Norrland, 20m2sk for Southern Norrland, 23m&sup3;sk for Svealand and 30.5m&sup3;sk for Götaland.
+                            </canvas>
+                        </div>
+                    </div>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        Looking at the average deforestation volume of Sweden’s forests in each region, gives a view on where the problem occurs the most in Sweden. The data used is from SLU Riksskogstaxeringen (2025).
+                        <br><br>
+                        The chart shows the average deforestation volume of each region in Sweden in the years 2000 until 2020. It is clear from the chart that Götaland has the biggest deforestation volume compared to the other regions, with Svealand being the second. Though when comparing the south and the north of Sweden in total there is more deforestation in the northern parts. 
+                        <br><br>
+                        Combining the values from the north, N Norrland and S Norrland, the deforestation volume in Norrland is around 31.8 million forest cubic meters (m&sup3;sk), while in Götaland it is around 30.5 million forest cubic meters (m&sup3;sk). Which is a difference of around 1.3 million forest cubic meters (m&sup3;sk). 
+                        <br><br>
+                        Ahlström et al. (2022) study shows similar results as the data from SLU Riksskogstaxeringen (2025). Stating that clear-cuts of forests are occurring across the whole region but more prominent in the north, the reason being is that most of the souths older forests were clear-cut previously by 1966.  
+                    </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row mx-1">
+                    <h4 id="seg" class="c-w pt-5">Average Forest Growth Volume in Swedish Regions (2000-2020)</h4>
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <canvas id="seForestGrowth" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2" role="img" aria-label="A chart of the average Growth volume in Swedish regions in million forest cubic meters. It shows The values 23m&sup3;sk for Northern Norrland, 30m2sk for Southern Norrland, 32m&sup3;sk for Svealand and 36m&sup3;sk for Götaland.">
+                                A chart of the average Growth volume in Swedish regions in million forest cubic meters. It shows The values 23m&sup3;sk for Northern Norrland, 30m2sk for Southern Norrland, 32m&sup3;sk for Svealand and 36m&sup3;sk for Götaland.
+                            </canvas>
+                        </div>
+                    </div>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        Swedish Forest Industries (2024) provides some information about tree growth in Sweden. It is said that a typical growth cycle of a forest is between 60 and 100 years. It is also said that trees in southern Sweden grow twice as much faster as trees in the northern parts. In another article, Swedish Forest Industries (2024), it is claimed that tree growth outpaces felling.  
+                        <br><br>
+                        By showing data from SLU Riksskogstaxeringen (2025) in a chart of Sweden’s forest volume increase in each region, the growth compared to the felling can be investigated.
+                        <br><br>
+                        The chart shows that Götaland has the biggest growth volume compared to the other regions. Though comparing the north with the south, summing N Norrland’s and S Norrland’s growth volume making the norths total growth volume around 53 million forest cubic meters (m&sup3;sk), the north has a higher growth volume than the south, which is around 36 million forest cubic meters (m&sup3;sk).
+                        <br><br>
+                        Comparing the growth volume to the deforestation from the average deforestation volume of Sweden’s forests chart it is clear, like Swedish Forest Industries (2024) claimed, that growth outpaces the felling. In northern Sweden the growth outpaces the felling by 40 percent and in southern Sweden by 15 percent. The data from SLU Riksskogstaxeringen (2025) shows more growth in volume in the northern areas, though it does not give an insight into the growth speed of trees in each region.  
+                        <br><br>
+                        According to the study Fassl et al. (2024) Nothern Sweden contains the largest protected forests in the country. The study also shows an increased growth of the two tree species Scots pine and downy birch in a northern forest reserve, particularly in the recent decades. It is also noted that increasing temperatures, caused by climate change, in the northern parts has a positive impact on the species Scots pine. This could explain the significant difference in forest growth volume in the northern areas compared to the southern areas.  
+                    </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row mx-1">
+                    <h4 id="sep" class="c-w pt-5">Percentage of Protected Forest Area in Swedish Regions in (2023)</h4>
+                    <div class="row">
+                        <div class="col-12 col-lg-8 mb-4 p-1 p-sm-2 p-md-3">
+                            <div id="seProtectedForest" class="bg-w  rounded-2" role="img" aria-label="A map showing the percentage of protected forest area in each Swedish region. Northern Norrland has 18.6 percent, Southern Norrland has 4.6 percent, Svealand has 5.8 percent and Götaland has 3.5 percent"></div>
+                        </div>
+                    </div>
+                    <p class="c-w col-12 col-md-8 col-lg-6 col-xxl-4">
+                        A map showing the percent of protected forests in each region gives a view on how Sweden manages its forests biodiversity. The data used is from Statistics Sweden (2024).
+                        <br><br>
+                        The map shows that the region with most protected forests is N Norrland, followed by Svealand. N Norrland has about 18.6 percent of its forest protected, while Svealand has 5.8 percent, S Norrland has 4.6 percent and Götaland has 3.5 percent.
+                        <br><br>
+                        What the map is showing corresponds with Fassl et al. (2024) stating that the northern part of Sweden holds the largest protected forests. although the size of the protected area cannot be determined by the map, N Norrland has the biggest proportion of protected forests. 
+                        <br><br>
+                        Ahlström et al. (2022) notes that only 19.1 percent of old forests are protected, arguing that unprotected old forests may provide greater ecosystem value than those in protected zones, since they are often found in warmer and more productive areas. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-w-gradient">
+            <div class="">
+                <div class="bg-forest-container">
+                    <div class="forest-container"></div>
+                </div>
+                <div class="container">
+                    <div class="text-center">
+                        <h2 class="c-dg fw-bold mt-5 mb-3">What Do You Want To Know About?</h2>
+                        <div class="d-flex flex-column align-items-center">
+                            <a class="c-b fs-3 fw-semibold mb-2" href="Europe.html">Europe</a>
+                            <a class="c-b fw-semibold my-2" href="Europe.html#eua">The change of Europe's Forest Area</a>
+                            <a class="c-b fw-semibold my-2" href="Europe.html#euag">European Countries With Most Forest Area Gain</a>
+                            <a class="c-b fw-semibold my-2" href="Europe.html#eual">European Countries With Most Forest Area Loss</a>
+                            <a class="c-g fs-3 fw-semibold my-2" href="Sweden.html">Sweden</a>
+                            <a class="c-lg fw-semibold my-2" href="Sweden.html#sea">The Change of Sweden's Forest Area</a>
+                            <a class="c-lg fw-semibold my-2" href="Sweden.html#sed">Average Deforestation Volume in Swedish Regions</a>
+                            <a class="c-lg fw-semibold my-2" href="Sweden.html#seg">Average Forest Growth Volume in Swedish Regions</a>
+                            <a class="c-lg fw-semibold my-2" href="Sweden.html#sep">Share of Protected Forest Area in Swedish Regions</a>
+                            <a class="c-b fs-3 fw-semibold my-2 pb-5" href="references.html">References</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
