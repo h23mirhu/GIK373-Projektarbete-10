@@ -127,12 +127,11 @@ a:hover {
     padding: 1rem;
 }
 
-<<<<<<< Updated upstream
 .bd-blur{
     backdrop-filter: blur(5px);
-=======
+}
+
 #seProtectedForest {
     width: 260px;
     min-height: 100%;
->>>>>>> Stashed changes
 }
