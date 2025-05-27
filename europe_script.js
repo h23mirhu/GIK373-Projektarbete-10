@@ -128,7 +128,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         const values = forestAreaData.map((item) => item.value);
 
         const datasets = [{
-            label: "Forest area (millions of hectares)",
+            label: "Forest area",
             data: values,
             borderWidth: 2,
             backgroundColor: 'hsla(125, 19%, 39%, 0.5)',
