@@ -84,6 +84,8 @@ function printSeForestAreaChart(dataSeForestArea) {
         type: 'line',
         data: { labels, datasets }
     });
+
+    document.getElementById('seaSpinner').style.display = 'none';
 }
 
 // URL for the average deforestation in each region in Sweden written in the variable 'urlSeDeforestation'
@@ -166,7 +168,8 @@ fetch(requestSeDeforestation)
             'seDeforestation',
             "Deforestation (Million m \u00B3sk)",
             labels,
-            data
+            data,
+            'sedSpinner'
         );
     });
 
@@ -230,7 +233,8 @@ fetch(requestSeForestGrowth)
             'seForestGrowth',
             'Forest Growth (Million m \u00B3sk)',
             labels,
-            data
+            data,
+            'segSpinner'
         );
     });
 
@@ -364,8 +368,8 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     return { labels, data};
 }
 
-// Function for the bar chart for the for the average deforestation in each region in Sweden
-function printSeTreesChart(chartId, chartTitle, labels, data){
+// Function for the bar chart for both average deforestation and forest growth in each region in Sweden
+function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
         {
@@ -380,6 +384,8 @@ function printSeTreesChart(chartId, chartTitle, labels, data){
         type: 'bar',
         data: { labels, datasets }
     });
+
+    document.getElementById(spinnerId).style.display = 'none';
 }
 
 // Function for the map of protected forest area in each region in Sweden
@@ -433,10 +439,13 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       b: 110
     }
   };
+  const spinner = document.getElementById('sepSpinner').style.display = 'none';
 
   const config = { responsive: true, displayModeBar:false }
 
-  Plotly.newPlot('seProtectedForest', dataForMap, layout, config);
+  Plotly.newPlot('seProtectedForest', dataForMap, layout, config, spinner);
+
+  
 }
 
 fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&areaCode=112&areaCode=100&areaCode=203&areaCode=348&areaCode=616&areaCode=498&areaCode=642&areaCode=643&areaCode=703&areaCode=804&areaCode=248&areaCode=208&areaCode=233&areaCode=234&areaCode=246&areaCode=831&areaCode=352&areaCode=372&areaCode=833&areaCode=832&areaCode=428&areaCode=440&areaCode=578&areaCode=744&areaCode=752&areaCode=826&areaCode=008&areaCode=020&areaCode=070&areaCode=191&areaCode=292&areaCode=300&areaCode=336&areaCode=380&areaCode=470&areaCode=499&areaCode=807&areaCode=620&areaCode=674&areaCode=688&areaCode=705&areaCode=724&areaCode=040&areaCode=056&areaCode=250&areaCode=276&areaCode=438&areaCode=442&areaCode=492&areaCode=528&areaCode=756&timePeriod=2000&timePeriod=2001&timePeriod=2002&timePeriod=2003&timePeriod=2004&timePeriod=2005&timePeriod=2006&timePeriod=2007&timePeriod=2008&timePeriod=2009&timePeriod=2010&timePeriod=2011&timePeriod=2012&timePeriod=2013&timePeriod=2014&timePeriod=2015&timePeriod=2016&timePeriod=2017&timePeriod=2018&timePeriod=2019&timePeriod=2020&pageSize=1210')
