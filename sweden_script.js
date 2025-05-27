@@ -434,6 +434,12 @@ function displaySeProtectedForestOnMap(dataSeProtectedForest){
       locations: mapData.labels, 
       z: mapData.data,
       featureidkey: 'properties.region',
+      colorbar: {
+        title: {
+          text: 'Protected Forest Area (%)', 
+          side: 'right'
+        }
+      },
       colorscale: [
         [0, 'hsla(54, 68%, 94%, 1)'],
         [0.5, 'hsla(125, 19%, 39%, 1)'],
