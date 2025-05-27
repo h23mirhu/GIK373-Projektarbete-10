@@ -67,7 +67,7 @@ function printSeForestAreaChart(dataSeForestArea) {
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
         {
-            label: "Forest Area (Million Hectars)",
+            label: "Forest Area",
             data,
             borderWidth: 2,
             backgroundColor: 'hsla(125, 19%, 39%, 0.5)',
@@ -82,7 +82,17 @@ function printSeForestAreaChart(dataSeForestArea) {
     // A line chart is created in the HTML-element with the id 'seForestArea'
     new Chart(document.getElementById('seForestArea'), {
         type: 'line',
-        data: { labels, datasets }
+        data: { labels, datasets },
+        options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: `Million Hectares`
+                    }
+                }
+            }
+        }
     });
 
     document.getElementById('seaSpinner').style.display = 'none';
@@ -166,7 +176,7 @@ fetch(requestSeDeforestation)
         const { labels, data } = preparationSeTreesChart(dataSeDeforestation.data);
         printSeTreesChart(
             'seDeforestation',
-            "Deforestation (Million m \u00B3sk)",
+            "Deforestation",
             labels,
             data,
             'sedSpinner'
@@ -231,7 +241,7 @@ fetch(requestSeForestGrowth)
         const { labels, data } = preparationSeTreesChart(dataSeForestGrowth.data, 100);
         printSeTreesChart(
             'seForestGrowth',
-            'Forest Growth (Million m \u00B3sk)',
+            'Forest Growth',
             labels,
             data,
             'segSpinner'
@@ -382,7 +392,17 @@ function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
     // A bar chart is created in the HTML-element with the id 'seDeforestation'
     new Chart(document.getElementById(chartId), {
         type: 'bar',
-        data: { labels, datasets }
+        data: { labels, datasets },
+        options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: `Million m \u00B3sk`
+                        }
+                    }
+                }
+            }
     });
 
     document.getElementById(spinnerId).style.display = 'none';
