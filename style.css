@@ -60,6 +60,19 @@ a.link-btn:hover {
     text-decoration: underline;
 }
 
+a.link-hover:hover {
+    text-decoration: underline;
+}
+
+a.show,
+a:focus {
+    color: hsl(32, 50%, 62%) !important;
+}
+
+.navbar-nav .dropdown-item:focus {
+    color: hsl(32, 50%, 62%) !important;
+}
+
 .navbar-toggler:focus {
     background-color: hsl(54, 68%, 94%);
     box-shadow: none;
