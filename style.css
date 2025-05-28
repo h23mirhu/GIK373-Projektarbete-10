@@ -71,20 +71,12 @@
     text-align: justify;
 }
 
-.w-70{
-    width: 70rem;
-}
-
 .h-auto{
     height: auto;
 }
 
 a:hover {
     color: hsl(32, 50%, 62%) !important;
-}
-
-.navbar-bd{
-    backdrop-filter: blur(5px) brightness(80%);
 }
 
 .navbar-toggler:focus {
