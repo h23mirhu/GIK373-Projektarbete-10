@@ -39,7 +39,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             const start = values[2000];
             const end = values[2020];
 
-            if(start && end){
+            if(start && end){ //If country has both years then we calculate
                 const areaGain = end - start;
                 const percentChange = (areaGain / end) * 100;
 
@@ -80,7 +80,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             .slice(0, 5)
 
         const lossLabels = top5Loss.map((item) => item.country);
-        const lossValues = top5Loss.map((item) => Math.abs(item.percentChange));
+        const lossValues = top5Loss.map((item) => Math.abs(item.percentChange)); //Math.abs gives absolute value, turns negative values into positive which gives more clarity in a chart
 
         const lossDatasets = [{
             label: "Forest Area Loss (%)",
@@ -118,8 +118,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         const forestAreaData = sortedEUData.filter((item) => 
             item.description === "Forest area (thousands of hectares)")
 
-        //Variables for the Chart, visualisation about Europe's forest area changing over time
-
+        //Variables for the Chart, visualization about Europe's forest area changing over time
         const labels = forestAreaData.map((item) => item.year);
         const values = forestAreaData.map((item) => item.value);
 
