@@ -8,21 +8,44 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-dg h-auto">
-    <header class="pb-5">
+    <header>
         <nav class="navbar fixed-top navbar-expand-lg bg-navbar">
             <div class="container-fluid">
                 <a class="navbar-brand c-b" href="index.html">
                     <img src="Tree.svg" alt="Tree icon" width="53" height="63">
                 </a>
-                <button class="navbar-toggler bg-lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler bg-lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="custom-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse border-3 border-bottom b-w" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link c-w text-decoration-underline" href="Europe.html">Europe</a>
-                        <a class="nav-link c-w" href="Sweden.html">Sweden</a>
-                        <a class="nav-link c-w" href="references.html">References</a>
-                    </div>
+                <div class="collapse navbar-collapse border-1 border-bottom b-w" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle c-w text-decoration-underline" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Europe</a>
+                            <ul class="dropdown-menu bg-lg">
+                                <a class="dropdown-item link-btn fw-semibold border-1 border-bottom c-w text-decoration-underline" href="Europe.html">Europe</a>
+                                <li><a class="dropdown-item link-btn c-w" href="Europe.html#eua">The change of Europe's Forest Area</a></li>
+                                <li><a class="dropdown-item link-btn c-w" href="Europe.html#euag">European Countries With Most Forest Area Gain</a></li>
+                                <li><a class="dropdown-item link-btn c-w" href="Europe.html#eual">European Countries With Most Forest Area Loss</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle c-w" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sweden</a>
+                            <ul class="dropdown-menu bg-lg">
+                                <a class="dropdown-item link-btn fw-semibold border-1 border-bottom c-w" href="Sweden.html">Sweden</a>
+                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sea">The Change of Sweden's Forest Area</a></li>
+                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sed">Average Deforestation Volume in Swedish Regions</a></li>
+                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#seg">Average Forest Growth Volume in Swedish Regions</a></li>
+                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sep">Share of Protected Forest Area in Swedish Regions</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle c-w" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">References</a>
+                            <ul class="dropdown-menu bg-lg">
+                                <a class="dropdown-item link-btn fw-semibold border-1 border-bottom c-w" href="references.html">References</a>
+                                <li><a class="dropdown-item link-btn c-w" href="references.html#ads">About the Datasets</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -31,7 +54,7 @@
         <div class="bg-g-gradient">
             <div class="container">
                 <div class="row mt-5 mx-1">
-                    <h1 class="c-w mt-3 col-12">
+                    <h1 class="c-w mt-5 col-12">
                         Europe, Goal 15 and Indicator 15.1.1
                     </h1>
             
@@ -40,17 +63,17 @@
                     <p class="c-w mb-4 col-12 col-md-8 col-lg-6 col-xxl-4">
                     Within Europe, Goal 15 plays a crucial role in shaping environmental policies focused on ecological recovery and long-term sustainability. Given the continent's diverse climates and history of land use, the sustainable managements of forests is both a priority and a challenge.
                     </p>
-                    <div id="eua">
+                    <div id="eua" class="bg-lg rounded-3 mx-1 mb-3 px-1 py-5 row">
                         <h4 class="c-w mb-2">
                             The change of Europe's forest area over time (2000-2020)
                         </h4>
-                        <div class="bg-w rounded-2 col-12  col-lg-8">
+                        <div class="bg-w rounded-2 col-12 col-lg-8">
                             <div class="d-flex justify-content-center">
                                 <div id="euSpinner" class="spinner-border c-g" role="status"></div>
                             </div>
-                            <canvas id="euForestOverTime" alt="Diagram of Europe's forest area change over time between the years 2000 and 2020. It shows a slowly increasing trend."></canvas>
+                            <canvas id="euForestOverTime" class="mb-4"></canvas>
                         </div>
-                        <p class="c-w my-5 col-12 col-md-8 col-lg-6 col-xxl-4">
+                        <p class="c-w my-5 multi-col">
                             The diagram above illustrates the development of forest area, measured in millions of hectares, in Europe from 2000 to 2020, however with the exception of the years 2001-2009 and 2011-2014 not being available in the API dataset (SDGs API, 2025). The data reveals a consistent upward trend, beginning at approximately 1,002 million hectares in 2000 and increasing to nearly 1,018 million hectares by 2020. 
                             <br><br>
                             This trend supports SDG Indicator 15.1.1, which measures the proportions of land area covered by forest and indicates the Europe is making tangible progress toward restoring its terrestrial ecosystems. The increase in forest cover also aligns with findings by Palmero-Iniesta et al. (2021), who note that 66% of Europe's forest gains between 1992 and 2015 resulted from expansion into former agricultural lands, while 34% came from regeneration in areas impacted by disturbance (Palmero-Iniesta et al., 2021).
