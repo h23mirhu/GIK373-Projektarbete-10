@@ -10,10 +10,24 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
            country: item.geoAreaName,
            description: item.seriesDescription 
         }))
-        .sort((a,b) => a.year - b.year);
+        .sort((a,b) => a.year - b.year)
+
+        const landAreaByCountry = {};
+
+        sortedData.forEach(item => {
+            if (item.description === 'Land area (thousands of hectares)') {
+                landAreaByCountry[item.country] = parseFloat(item.value);
+            }
+        })
+
+        const filteredSortedData = sortedData.filter(item => {
+            const landArea = landAreaByCountry[item.country];
+
+            return !landArea || landArea >= 10500; //Filter the data to not include countries with a land area below 10,500, only big countries
+        })
 
         //Filter the sorted data and pick out Forest area and specific years 2000 and 2020
-        const forestAreaData = sortedData.filter(item =>
+        const forestAreaData = filteredSortedData.filter(item =>
             item.description === "Forest area (thousands of hectares)" && (item.year === 2000 || item.year === 2020)
         );
 
@@ -70,6 +84,13 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             data: {
                 labels: gainLabels,
                 datasets: gainDatasets
+            },
+            options: {
+                plugins: {
+                    legend: {
+                    display: false
+                    }
+                }
             }
         })
         document.getElementById('gainSpinner').style.display = 'none';
@@ -94,7 +115,15 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             data: {
                 labels: lossLabels,
                 datasets: lossDatasets
+            },
+            options: {
+                plugins: {
+                    legend: {
+                    display: false
+                    }
+                }
             }
+
         })
 
         document.getElementById('lossSpinner').style.display = 'none';
@@ -116,11 +145,11 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
 
         //Filtering the data to only include Forest area and save it in variable
         const forestAreaData = sortedEUData.filter((item) => 
-            item.description === "Forest area (thousands of hectares)")
+            item.description === "Forest area (thousands of hectares)" && (item.year !== 2000 && item.year !== 2010))
 
         //Variables for the Chart, visualization about Europe's forest area changing over time
         const labels = forestAreaData.map((item) => item.year);
-        const values = forestAreaData.map((item) => item.value);
+        const values = forestAreaData.map((item) => item.value.toFixed(1));
 
         const datasets = [{
             label: "Forest area",
@@ -139,14 +168,11 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
             type: 'line',
             data: {labels, datasets},
             options: {
-            scales: {
-                y: {
-                    title: {
-                        display: true,
-                        text: `Million Hectares`
+                plugins: {
+                    legend: {
+                    display: false
                     }
                 }
-            }
         }
             })
         document.getElementById('euSpinner').style.display = 'none';
