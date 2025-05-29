@@ -34,7 +34,7 @@
                             <ul class="dropdown-menu bg-lg">
                                 <a class="dropdown-item link-btn fw-semibold border-1 border-bottom c-w text-decoration-underline" href="Sweden.html">Sweden</a>
                                 <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sea">The Change of Sweden's Forest Area</a></li>
-                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sed">Average Deforestation Volume in Swedish Regions</a></li>
+                                <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sed">Average Felling Volume in Swedish Regions</a></li>
                                 <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#seg">Average Forest Growth Volume in Swedish Regions</a></li>
                                 <li><a class="dropdown-item link-btn c-w bg-g" href="Sweden.html#sep">Share of Protected Forest Area in Swedish Regions</a></li>
                             </ul>
@@ -67,13 +67,13 @@
             </div>
             <div class="container">
                 <div id="sea" class="bg-lg rounded-3 mx-1 mb-3 px-1 py-5 rounded-3 row">
-                    <h4 class="c-w">The Change of Sweden's Forest Area Over Time (2000-2020)</h4>
+                    <h4 class="c-w">The Change of Sweden's Forest Area Over Time in Million Hectares (2000-2020)</h4>
                     <div class="row">
-                        <div class="col-12 col-lg-8">
+                        <div class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2 ms-2 col-12 col-lg-8">
                             <div class="d-flex justify-content-center">
                                 <div id="seaSpinner" class="spinner-border c-g" role="status"></div>
                             </div>
-                            <canvas id="seForestArea" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2"></canvas>
+                            <canvas id="seForestArea"></canvas>
                         </div>
                     </div>
                     <div class="multi-col">
@@ -103,21 +103,21 @@
             </div>
             <div class="container">
                 <div class="bg-dg rounded-3 mx-1 mb-3 px-1 py-5 row">
-                    <h4 id="sed" class="c-w">Average Annual Deforestation Volume in Swedish Regions (2000-2020)</h4>
+                    <h4 id="sed" class="c-w">Average Annual Felling Volume in Swedish Regions in Million Forest Cubic Meters (2000-2020)</h4>
                     <div class="row">
-                        <div class="col-12 col-lg-8">
+                        <div class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2 ms-2 col-12 col-lg-8">
                             <div class="d-flex justify-content-center">
-                                <div id="sedSpinner" class="spinner-border c-dg" role="status"></div>
+                                <div id="sedSpinner" class="spinner-border c-g" role="status"></div>
                             </div>
-                            <canvas id="seDeforestation" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2"></canvas>
+                            <canvas id="seFelling"></canvas>
                         </div>
                     </div>
                     <p class="c-w multi-col">
-                        Looking at the average annual deforestation volume of Sweden’s forests in each region, gives a view on where forest loss occurs most in Sweden. The data used is from SLU Riksskogstaxeringen (2025).
+                        Looking at the average annual felling volume of Sweden’s forests in each region, gives a view on where forest loss occurs most in Sweden. The data used is from SLU Riksskogstaxeringen (2025).
                         <br><br>
-                        The chart shows the average annual deforestation volume of each region in Sweden in the years 2000 until 2020. It is clear from the chart that Götaland has the biggest deforestation volume per year compared to the other regions, with Svealand being the second. Though when comparing the south and the north of Sweden in total there is more deforestation in the northern parts. 
+                        The chart shows the average annual felling volume of each region in Sweden in the years 2000 until 2020. It is clear from the chart that Götaland has the biggest felling volume per year compared to the other regions, with Svealand being the second. Though when comparing the south and the north of Sweden in total there is more felling in the northern parts. 
                         <br><br>
-                        Combining the values from the north, Upper Norrland and Lower Norrland, the average annual deforestation volume in Norrland is around 31.8 million forest cubic meters (m&sup3;sk), while in Götaland it is around 30.5 million forest cubic meters (m&sup3;sk). Which is a difference of around 1.3 million forest cubic meters (m&sup3;sk). 
+                        Combining the values from the north, Upper Norrland and Lower Norrland, the average annual felling volume in Norrland is around 31.8 million forest cubic meters (m&sup3;sk), while in Götaland it is around 30.5 million forest cubic meters (m&sup3;sk). Which is a difference of around 1.3 million forest cubic meters (m&sup3;sk). 
                         <br><br>
                         Ahlström et al. (2022) study shows similar results as the data from SLU Riksskogstaxeringen (2025). Stating that clear-cuts of forests are occurring across the whole region but more prominent in the north, the reason being is that most of the souths older forests were clear-cut previously by 1966.  
                     </p>
@@ -125,13 +125,13 @@
             </div>
             <div class="container">
                 <div class="bg-g rounded-3 mx-1 mb-3 px-1 py-5 row">
-                    <h4 id="seg" class="c-w">Average Annual Forest Growth Volume in Swedish Regions (2000-2020)</h4>
+                    <h4 id="seg" class="c-w">Average Annual Forest Growth Volume in Swedish Regions in Million Forest Cubic Meters (2000-2020)</h4>
                     <div class="row">
-                        <div class="col-12 col-lg-8">
+                        <div class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2 ms-2 col-12 col-lg-8">
                             <div class="d-flex justify-content-center">
                                 <div id="segSpinner" class="spinner-border c-g" role="status"></div>
                             </div>
-                            <canvas id="seForestGrowth" class="bg-w mb-4 p-1 p-sm-2 p-md-3 rounded-2"></canvas>
+                            <canvas id="seForestGrowth"></canvas>
                         </div>
                     </div>
                     <p class="c-w multi-col">
@@ -141,7 +141,7 @@
                         <br><br>
                         The chart shows that Götaland has the biggest average annual growth volume compared to the other regions. Though comparing the north with the south, summing Upper Norrland’s and Lower Norrland’s growth volume, making the norths average annual total growth volume around 53 million forest cubic meters (m&sup3;sk). The north has a higher average annual growth volume than the south, which is around 36 million forest cubic meters (m&sup3;sk).
                         <br><br>
-                        Comparing the average annual growth volume to the average annual deforestation from the average annual average deforestation volume of Sweden’s forests chart it is clear, like Swedish Forest Industries (2024) claimed, that growth outpaces the felling. In northern Sweden the average annual growth outpaces the felling by 40 percent and in southern Sweden by 15 percent. The data from SLU Riksskogstaxeringen (2025) shows more growth in volume in the northern areas, though it does not give an insight into the growth speed of trees in each region.  
+                        Comparing the average annual growth volume to the average annual felling from the average annual average felling volume of Sweden’s forests chart it is clear, like Swedish Forest Industries (2024) claimed, that growth outpaces the felling. In northern Sweden the average annual growth outpaces the felling by 40 percent and in southern Sweden by 15 percent. The data from SLU Riksskogstaxeringen (2025) shows more growth in volume in the northern areas, though it does not give an insight into the growth speed of trees in each region.  
                         <br><br>
                         According to the study Fassl et al. (2024) Nothern Sweden contains the largest protected forests in the country. The study also shows an increased growth of the two tree species Scots pine and downy birch in a northern forest reserve, particularly in the recent decades. It is also noted that increasing temperatures, caused by climate change, in the northern parts has a positive impact on the species Scots pine. This could explain the significant difference in forest growth volume in the northern areas compared to the southern areas.
                     </p>
@@ -153,9 +153,9 @@
                     <div class="row">
                         <div class="col-12 col-lg-8 mb-4 p-1 p-sm-2 p-md-3">
                             <div class="d-flex justify-content-center">
-                                <div id="sepSpinner" class="spinner-border c-g" role="status"></div>
+                                <div id="sepSpinner" class="spinner-border c-w" role="status"></div>
                             </div>
-                            <div id="seProtectedForest" class="bg-w  rounded-2"></div>
+                            <div id="seProtectedForest" class="bg-w rounded-2"></div>
                         </div>
                     </div>
                     <p class="c-w multi-col">
@@ -194,7 +194,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="sweden_script.js"></script>
+    <script src="sweden_script.j"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -54,6 +54,10 @@ a:hover {
     color: hsl(32, 50%, 62%) !important;
     text-decoration: none;
 }
+a.show,
+a:focus {
+    color: hsl(32, 50%, 62%) !important;
+}
 
 a.link-btn:hover {
     background-color: hsl(125, 19%, 39%) !important;
@@ -62,11 +66,6 @@ a.link-btn:hover {
 
 a.link-hover:hover {
     text-decoration: underline;
-}
-
-a.show,
-a:focus {
-    color: hsl(32, 50%, 62%) !important;
 }
 
 .navbar-nav .dropdown-item:focus {
