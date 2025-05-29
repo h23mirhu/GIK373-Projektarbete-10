@@ -95,11 +95,11 @@ function printSeForestAreaChart(dataSeForestArea) {
     document.getElementById('seaSpinner').style.display = 'none';
 }
 
-// URL for the average deforestation in each region in Sweden written in the variable 'urlSeDeforestation'
+// URL for the average annual felling in each region in Sweden written in the variable 'urlSeFelling'
 // From SLU
-const urlSeDeforestation = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Avverkning/AVV_arlig_avverkning_landsdelar_tab.px';
-// JSON code for the average deforestation in each region in Sweden written in the variable 'querySeDeforestation'
-const querySeDeforestation = {
+const urlSeFelling = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Avverkning/AVV_arlig_avverkning_landsdelar_tab.px';
+// JSON code for the average annual felling in each region in Sweden written in the variable 'querySeFelling'
+const querySeFelling = {
   "query": [
     {
       "code": "År",
@@ -159,31 +159,31 @@ const querySeDeforestation = {
 
 // Request object with information from the dataset
 // The request har the type 'POST'
-// The content of the request is in the variable 'querySeDeforestation'
-const requestSeDeforestation = new Request(urlSeDeforestation, {
+// The content of the request is in the variable 'querySeFelling'
+const requestSeFelling = new Request(urlSeFelling, {
     method: 'POST',
-    body: JSON.stringify(querySeDeforestation)
+    body: JSON.stringify(querySeFelling)
 });
 
-// The method fetch is used to preform the requestSeDeforestation and convert it to JSON
+// The method fetch is used to preform the requestSeFelling and convert it to JSON
 // The function 'printSeTreesChart' is sent in the last .then
-fetch(requestSeDeforestation)
-    .then((responseSeDeforestation) => responseSeDeforestation.json())
-    .then((dataSeDeforestation) => {
-        const { labels, data } = preparationSeTreesChart(dataSeDeforestation.data);
+fetch(requestSeFelling)
+    .then((responseSeFelling) => responseSeFelling.json())
+    .then((dataSeFelling) => {
+        const { labels, data } = preparationSeTreesChart(dataSeFelling.data);
         printSeTreesChart(
-            'seDeforestation',
-            "Deforestation",
+            'seFelling',
+            "Felling",
             labels,
             data,
             'sedSpinner'
         );
     });
 
-// URL for the average forest growth in each region in Sweden written in the variable 'urlSeForestGrowth'
+// URL for the average annual forest growth in each region in Sweden written in the variable 'urlSeForestGrowth'
 // From SLU
 const urlSeForestGrowth = 'https://skogsstatistik.slu.se:443/api/v1/sv/OffStat/Skogsmark/Tillvaxt/SM_Tillvaxt_tab.px';
-// JSON code for the average forest growth in each region in Sweden written in the variable 'querySeForestGrowth'
+// JSON code for the average annual forest growth in each region in Sweden written in the variable 'querySeForestGrowth'
 const querySeForestGrowth = {
   "query": [
     {
@@ -329,7 +329,7 @@ fetch(requestSeProtectedForest)
     .then(displaySeProtectedForestOnMap);
 
 // Prepares the data for the trees charts in Sweden
-// The function is made to be used for the all the charts for for the average deforestation and average forest growth map
+// The function is made to be used for the all the charts for for the average annual felling and average annual forest growth map
 // valueScale is used to divide the values for different units, to right all charts in the same unit
 function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     // Renames the region code to names
@@ -353,7 +353,7 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
         'Götaland': 0
     };
     
-    // A loop that counts the average deforestation/forest growth of each region
+    // A loop that counts the average annual felling/forest growth of each region
     // Also combines Upper Norrland and Lower Norrland into Norrland
     dataSeTrees.forEach((row) => {
         // Writes the region code to the variable 'regionCode'
@@ -375,7 +375,7 @@ function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     return { labels, data};
 }
 
-// Function for the bar chart for both average deforestation and forest growth in each region in Sweden
+// Function for the bar chart for both average annual felling and forest growth in each region in Sweden
 function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
     // The varaible 'datasets' contains an array with the dataset
     const datasets = [
@@ -386,7 +386,7 @@ function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
             hoverBackgroundColor: 'hsla(125, 18%, 25%, 1)'
         }
     ];
-    // A bar chart is created in the HTML-element with the id 'seDeforestation'
+    // A bar chart is created in the HTML-elements
     new Chart(document.getElementById(chartId), {
         type: 'bar',
         data: { labels, datasets },
