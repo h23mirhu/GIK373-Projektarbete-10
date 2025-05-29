@@ -337,27 +337,27 @@ fetch(requestSeProtectedForest)
 function preparationSeTreesChart(dataSeTrees, valueScale = 1) {
     // Renames the region code to names
     const regionCodes = {
-        '101': 'N Norrland',
-        '102': 'S Norrland',
+        '101': 'Upper Norrland',
+        '102': 'Lower Norrland',
         '103': 'Svealand',
         '104': 'Götaland'
     };
     // Writes the data for each region in the variables
     const regionData = {
-        'N Norrland': 0,
-        'S Norrland': 0,
+        'Upper Norrland': 0,
+        'Lower Norrland': 0,
         'Svealand': 0,
         'Götaland': 0
     };
     const regionCounts = {
-        'N Norrland': 0,
-        'S Norrland': 0,
+        'Upper Norrland': 0,
+        'Lower Norrland': 0,
         'Svealand': 0,
         'Götaland': 0
     };
     
     // A loop that counts the average deforestation/forest growth of each region
-    // Also combines N Norrland and S Norrland into Norrland
+    // Also combines Upper Norrland and Lower Norrland into Norrland
     dataSeTrees.forEach((row) => {
         // Writes the region code to the variable 'regionCode'
         const region = regionCodes[row.key[1]];
@@ -395,6 +395,13 @@ function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
         data: { labels, datasets },
         options: {
                 scales: {
+                    x:{
+                        ticks: {
+                          font: {
+                            size: 11
+                          }
+                        }
+                    },
                     y: {
                         title: {
                             display: true,
@@ -412,8 +419,8 @@ function printSeTreesChart(chartId, chartTitle, labels, data, spinnerId){
 function displaySeProtectedForestOnMap(dataSeProtectedForest){
   // Renames the region code to names
   const regionCodes = {
-      'NON': 'N Norrland',
-      'SON': 'S Norrland',
+      'NON': 'Upper Norrland',
+      'SON': 'Lower Norrland',
       'SVE': 'Svealand',
       'GOT': 'Götaland'
   };
