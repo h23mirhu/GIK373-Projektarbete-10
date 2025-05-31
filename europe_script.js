@@ -73,7 +73,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         const gainValues = top5Gain.map((item) => item.percentChange);
 
         const gainDatasets = [{
-            label: 'Forest Area Gain (%)',
+            label: 'Area Increase (%)',
             data: gainValues,
             backgroundColor: 'hsla(125, 19%, 39%, 1)',
             hoverBackgroundColor: 'hsla(125, 18%, 25%, 1)'
@@ -104,7 +104,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
         const lossValues = top5Loss.map((item) => Math.abs(item.percentChange)); //Math.abs gives absolute value, turns negative values into positive which gives more clarity in a chart
 
         const lossDatasets = [{
-            label: "Forest Area Loss (%)",
+            label: "Area Decrease (%)",
             data: lossValues,
             backgroundColor: 'hsla(125, 19%, 39%, 1)',
             hoverBackgroundColor: 'hsla(125, 18%, 25%, 1)'
