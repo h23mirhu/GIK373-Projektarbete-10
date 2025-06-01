@@ -79,7 +79,7 @@ function printSeForestAreaChart(dataSeForestArea) {
             }
         }
     ];
-    // A line chart is created in the HTML-element with the id 'seForestArea'
+    // An area chart is created in the HTML-element with the id 'seForestArea'
     new Chart(document.getElementById('seForestArea'), {
         type: 'line',
         data: { labels, datasets },
