@@ -29,9 +29,6 @@
 .c-g {
     color: hsl(125, 18%, 25%);
 }
-.c-lg {
-    color: hsl(125, 19%, 39%);
-}
 .c-w {
     color: hsl(54, 68%, 94%);
 }
@@ -61,10 +58,6 @@ a:focus {
 
 a.link-btn:hover {
     background-color: hsl(125, 19%, 39%) !important;
-    text-decoration: underline;
-}
-
-a.link-hover:hover {
     text-decoration: underline;
 }
 
