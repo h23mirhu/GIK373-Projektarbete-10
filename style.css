@@ -107,10 +107,10 @@ a.link-hover:hover {
     min-height: 100%;
 }
 
-.scroll-down-btn {
+.scroll-up-btn {
     position: fixed;
     bottom: 10px;
-    left: 50%;
+    right: 10px;
     transform: translate(-50%);
     display: flex;
     align-items: center;
