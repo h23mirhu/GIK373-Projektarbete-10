@@ -1,4 +1,4 @@
-/* Mira Hussain */
+/* Mira Hussain & Lovisa Hansen */
 // URL for the Sweden's forest area change over time written in the variable 'urlSeForestArea'
 // From SCB
 const urlSeForestArea = 'https://api.scb.se/OV0104/v1/doris/sv/ssd/START/MI/MI0803/MI0803A/MarkanvJbSkN';
