@@ -67,20 +67,28 @@
                         <p>
                             The data for the Europe diagrams were taken from SDGs API (2025). Under the header "Indicator" the API "/v1/sdg/Indicator/Data" can be found and this was used to visualize the data about forest area for Europe and Europe's countries.  
                             <br><br>
-                            The parameters and values that were chosen for the diagram displaying Europe's forest area over time were: <br>
-                            <ul>
-                                <li>indicator: 15.1.1</li>
-                                <li>areaCode: 150</li>
-                                <li>timePeriod: 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</li>
-                                <li>pageSize: 50</li>
-                            </ul>
-                            The parameters and values that were chosen for the diagrams over European countries percentual gain and loss of forest area were: <br><br>
-                            <ul>
-                                <li>indicator: 15.1.1</li>
-                                <li>areaCode: 112, 100, 203, 348, 616, 498, 642, 643, 703, 804, 248, 208, 233, 234, 246, 831, 352, 372, 833, 832, 428, 440, 578, 744, 752, 826, 008, 020, 070, 191, 292, 300, 336, 380, 470, 499, 807, 620, 674, 688, 705, 724, 040, 056, 250, 276, 438, 442, 492, 528, 756</li>
-                                <li>timePeriod: 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</li>
-                                <li>pageSize: 1210</li>
-                            </ul>
+                            The parameters and values that were chosen for the diagram displaying Europe's forest area over time were:
+                            <div class="ms-4">
+                                <ul>
+                                    <li>indicator: 15.1.1</li>
+                                    <li>areaCode: 150</li>
+                                    <li>timePeriod: 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</li>
+                                    <li>pageSize: 50</li>
+                                </ul>
+                            </div>
+                            <br>
+                            The parameters and values that were chosen for the diagrams over European countries percentual gain and loss of forest area were:
+                            <br><br>
+                            <div>
+                                <ul>
+                                    <li>indicator: 15.1.1</li>
+                                    <li>areaCode: 112, 100, 203, 348, 616, 498, 642, 643, 703, 804, 248, 208, 233, 234, 246, 831, 352, 372, 833, 832, 428, 440, 578, 744, 752, 826, 008, 020, 070, 191, 292, 300, 336, 380, 470, 499, 807, 620, 674, 688, 705, 724, 040, 056, 250, 276, 438, 442, 492, 528, 756</li>
+                                    <li>timePeriod: 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</li>
+                                    <li>pageSize: 1210</li>
+                                </ul>
+                            </div>
+                            <br>
+                            The percentual change is calculated for each country, with the value from year 2020 subtracted by the value from year 2000, creating an either positive or negative new value <i>(y - x = z).</i> This new value is then divided with the value from year 2020 and multiplied with 100 <i>((z/y) * 100)</i> and results in a country's percentual change.
                         </p>
                     </div>
                 </div>
