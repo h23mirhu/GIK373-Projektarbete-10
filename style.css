@@ -104,6 +104,8 @@ a.link-btn:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 1px 1px 10px 2px hsla(131, 24%, 18%, 0.5);
+    border-radius: 100%;
 }
 
 .multi-col {
