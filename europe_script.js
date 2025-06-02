@@ -173,7 +173,7 @@ fetch('https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=15.1.1&area
                     display: false
                     }
                 }
-        }
-            })
+            }
+        })
         document.getElementById('euSpinner').style.display = 'none';
     })
